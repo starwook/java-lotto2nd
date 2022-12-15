@@ -15,15 +15,8 @@ public class Lotto {
     }
 
     private void checkNumberSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoMachine.getLottoSize()) {
             throw new IllegalArgumentException();
-        }
-    }
-    private void checkNumberInRange(List<Integer> numbers){
-        for(int i=0;i<numbers.size();i++){
-            if(numbers.get(i)<1 || numbers.get(i)>45){
-                throw new IllegalArgumentException();
-            }
         }
     }
 
