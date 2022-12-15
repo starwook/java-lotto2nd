@@ -6,17 +6,13 @@ public class LottoJudgeMent {
     private int matchCount;
     private boolean isBonusMatch;
 
-    public LottoJudgeMent(WinningLotto winningLotto, List<Lotto> lottos){
+    public LottoJudgeMent(WinningLotto winningLotto, Lotto lotto){
         List<Integer> winningNumbers = winningLotto.getLotto().getNumbers();
-        int bonusNumber = winningLotto.getBonusNumber();
-        checkEachLotto(lottos, winningNumbers, bonusNumber);
+        getLottoResult(lotto, winningNumbers, winningLotto.getBonusNumber());
     }
 
-    private void checkEachLotto(List<Lotto> lottos, List<Integer> winningNumbers, int bonusNumber) {
-        for(int i = 0; i< lottos.size(); i++){
-            Lotto lotto = lottos.get(i);
-            matchCount = lotto.countMatchingNumber(winningNumbers);
-            isBonusMatch = lotto.checkContainBonusNumber(bonusNumber);
-        }
+    private void getLottoResult(Lotto lotto, List<Integer> winningNumbers, int bonusNumber) {
+        matchCount = lotto.countMatchingNumber(winningNumbers);
+        isBonusMatch = lotto.checkContainBonusNumber(bonusNumber);
     }
 }
