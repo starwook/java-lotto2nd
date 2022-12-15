@@ -6,8 +6,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
         this.numbers = numbers;
+        validate(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -49,7 +49,6 @@ public class Lotto {
             }
         }
     }
-
     private void checkIfNumberSame(int i, int j) {
         if(i == j){
             return;

@@ -18,8 +18,8 @@ class LottoJudgeMentTest {
     @Test
     void 로또_져지먼트_테스트(){
         LottoJudgeMent lottoJudgeMent = new LottoJudgeMent(winning,lotto,6);
-        Assertions.assertThat(lottoJudgeMent.getRank().getCountOfMatch()).isEqualTo(Rank.FOURTH.getCountOfMatch());
-        Assertions.assertThat(lottoJudgeMent.getRank().getWinningMoney()).isEqualTo(Rank.FOURTH.getWinningMoney());
+        Assertions.assertThat(lottoJudgeMent.makeRank().getCountOfMatch()).isEqualTo(Rank.FOURTH.getCountOfMatch());
+        Assertions.assertThat(lottoJudgeMent.makeRank().getWinningMoney()).isEqualTo(Rank.FOURTH.getWinningMoney());
     }
 
 }

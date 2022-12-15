@@ -3,40 +3,42 @@ package lotto;
 import java.util.List;
 
 public class LottoJudgeMent {
-    private int matchCount;
-    private boolean isBonusMatch;
-    private Rank rank;
+    public int matchCount;
+    public boolean isBonusMatch;
     private int countToCheckBonus;
 
     public LottoJudgeMent(WinningLotto winningLotto, Lotto lotto,int countToCheckBonus){
         this.countToCheckBonus = countToCheckBonus;
         List<Integer> winningNumbers = winningLotto.getLotto().getNumbers();
         getLottoResult(lotto, winningNumbers, winningLotto.getBonusNumber());
+        makeRank();
     }
 
     private void getLottoResult(Lotto lotto, List<Integer> winningNumbers, int bonusNumber) {
         matchCount = lotto.countMatchingNumber(winningNumbers);
         isBonusMatch = lotto.checkContainBonusNumber(bonusNumber);
     }
-    public void makeRank(){
+    public Rank makeRank(){
         List<Rank> ranks = List.of(Rank.values());
         for(int i=0;i<ranks.size();i++){
-            checkEachRank(ranks, i);
-        }
-    }
-
-    private void checkEachRank(List<Rank> ranks, int i) {
-        if(matchCount == ranks.get(i).getCountOfMatch()){
-            if(matchCount == countToCheckBonus && isBonusMatch){
-                rank = Rank.SECOND;
-                return;
+            if(checkMatchCount(ranks.get(i))){
+                return checkIfBonusCorrect(ranks, i);
             }
-            rank = ranks.get(i);
         }
+        return null;
     }
 
-    public Rank getRank(){
-        return rank;
+    private Rank checkIfBonusCorrect(List<Rank> ranks, int i) {
+        if(countToCheckBonus ==matchCount &&isBonusMatch){
+            return Rank.SECOND;
+        }
+        return ranks.get(i);
     }
 
+    private boolean checkMatchCount(Rank rank) {
+        if(matchCount == rank.getCountOfMatch()){
+            return true;
+        }
+        return false;
+    }
 }

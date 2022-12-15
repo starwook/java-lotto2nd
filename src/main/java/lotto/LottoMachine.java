@@ -28,7 +28,12 @@ public class LottoMachine {
     private void checkEachLotto() {
         for(int i=0;i<lottos.size();i++){
             lottoJudgeMent = new LottoJudgeMent(winningLotto,lottos.get(i),countToCheckBonus);
-            lottoResult.changeRankCount(lottoJudgeMent.getRank());
+            changeRankCountIfWin();
+        }
+    }
+    private void changeRankCountIfWin() {
+        if(lottoJudgeMent.makeRank()!=null){
+            lottoResult.changeRankCount(lottoJudgeMent.makeRank());
         }
     }
 
@@ -70,7 +75,7 @@ public class LottoMachine {
     }
 
     public LottoResult getLottoResult(){
-        return getLottoResult();
+        return lottoResult;
     }
 
     public List<Lotto> getLottos(){
