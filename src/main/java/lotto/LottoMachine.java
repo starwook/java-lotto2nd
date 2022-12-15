@@ -1,7 +1,10 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class LottoMachine {
     private static int LOTTO_PRICE =1000;
@@ -16,9 +19,13 @@ public class LottoMachine {
     public LottoMachine(int purchase,List<Integer> winningLottoInput,int bonusNumberInput){
         validatePurchase(purchase);
         makeWinningLotto(winningLottoInput, bonusNumberInput);
+        makeLottos();
+    }
+    private void makeLottos() {
         for(int i=0;i<lottoCount;i++){
-            for(int lottoIndex =0;lottoIndex<LOTTO_SIZE;lottoIndex++){
-            }
+            List<Integer> lottoRandomNumbers = Randoms.pickUniqueNumbersInRange(RANGE_START,RANGE_END,LOTTO_SIZE);
+            Lotto lotto = new Lotto(lottoRandomNumbers);
+            lottos.add(lotto);
         }
     }
 
