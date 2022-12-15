@@ -10,21 +10,25 @@ public class LottoMachine {
     private static int LOTTO_SIZE =6;
     private static int RANGE_START =1;
     private static int RANGE_END =45;
+    private static int countToCheckBonus =5;
     private WinningLotto winningLotto;
     private LottoJudgeMent lottoJudgeMent;
+    private LottoResult lottoResult;
     private List<Lotto> lottos = new ArrayList<>();
     private int lottoCount;
-    private double returnRate;
+
 
     public LottoMachine(int purchase,List<Integer> winningLottoInput,int bonusNumberInput){
         validatePurchase(purchase);
+        lottoResult = new LottoResult(purchase);
         makeWinningLotto(winningLottoInput, bonusNumberInput);
         makeLottos();
         checkEachLotto();
     }
     private void checkEachLotto() {
         for(int i=0;i<lottos.size();i++){
-            lottoJudgeMent = new LottoJudgeMent(winningLotto,lottos.get(i));
+            lottoJudgeMent = new LottoJudgeMent(winningLotto,lottos.get(i),countToCheckBonus);
+            lottoResult.changeRankCount(lottoJudgeMent.getRank());
         }
     }
 
@@ -65,4 +69,11 @@ public class LottoMachine {
         return LOTTO_SIZE;
     }
 
+    public LottoResult getLottoResult(){
+        return getLottoResult();
+    }
+
+    public List<Lotto> getLottos(){
+        return lottos;
+    }
 }
