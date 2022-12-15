@@ -38,7 +38,7 @@ public class OutputView {
     }
 
     public void printEachResult(Rank rank,int count, boolean bonus){
-        System.out.print(rank.getCountOfMatch()+NUM);
+        System.out.print(rank.getCountOfMatch()+COUNT_OF_CORRECT);
         if(bonus){
             System.out.print(BONUS_CORRECT);
         }
