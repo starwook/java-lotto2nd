@@ -1,5 +1,7 @@
 package lotto;
 
+import Resource.ErrorResource;
+
 import java.util.List;
 
 public class Lotto {
@@ -17,7 +19,7 @@ public class Lotto {
 
     private void checkNumberSize(List<Integer> numbers) {
         if (numbers.size() != LottoMachine.getLottoSize()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorResource.ERROR_START+ErrorResource.NUMBER_SIZE_WRONG);
         }
     }
 
@@ -54,7 +56,7 @@ public class Lotto {
             return;
         }
         if(numbers.get(i)==numbers.get(j)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorResource.ERROR_START+ErrorResource.NUMBER_DUPLICATE);
         }
     }
 

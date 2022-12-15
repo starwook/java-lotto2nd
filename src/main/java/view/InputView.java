@@ -1,5 +1,6 @@
 package view;
 
+import Resource.ErrorResource;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
@@ -8,19 +9,31 @@ import java.util.List;
 public class InputView {
     public int inputOneNumber(){
         String input = Console.readLine();
-        return Integer.parseInt(input);
+        try{
+            return Integer.parseInt(input);
+        }
+        catch (Exception e){
+            throw new IllegalArgumentException(ErrorResource.ERROR_START+ErrorResource.NOT_NUMBER);
+        }
+
     }
 
     public List<Integer> inputWinningNumbers(){
         String input = Console.readLine();
         List<Integer> winningNumbers = new ArrayList<>();
-        input = input.replaceAll(",","");
-        for(int i=0;i<input.length();i++){
-            if(input.charAt(i)<'0'||input.charAt(i)>'9'){
-                throw new IllegalArgumentException();
-            }
-            winningNumbers.add(input.charAt(i)-'0');
+        List<String> splitNumber = List.of(input.split(","));
+        for(int i=0;i<splitNumber.size();i++){
+            changeToNumber(winningNumbers, splitNumber, i);
         }
         return winningNumbers;
+    }
+
+    private void changeToNumber(List<Integer> winningNumbers, List<String> splitNumber, int i) {
+        try{
+            winningNumbers.add(Integer.parseInt(splitNumber.get(i)));
+        }
+        catch (Exception e){
+            throw new IllegalArgumentException(ErrorResource.ERROR_START+ErrorResource.NOT_WINNING_NUMBER);
+        }
     }
 }
