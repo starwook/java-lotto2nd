@@ -12,6 +12,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         checkNumberSize(numbers);
+        checkDuplicateNumber();
     }
 
     private void checkNumberSize(List<Integer> numbers) {
@@ -40,4 +41,22 @@ public class Lotto {
         }
         return false;
     }
+
+    public void checkDuplicateNumber(){
+        for(int i=0;i<numbers.size();i++){
+            for(int j=0;j<numbers.size();j++){
+                checkIfNumberSame(i, j);
+            }
+        }
+    }
+
+    private void checkIfNumberSame(int i, int j) {
+        if(i == j){
+            return;
+        }
+        if(numbers.get(i)==numbers.get(j)){
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
