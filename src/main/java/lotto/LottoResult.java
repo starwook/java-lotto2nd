@@ -6,10 +6,10 @@ import java.util.Map;
 
 public class LottoResult {
     private static int START_COUNT =0;
-    Map<Rank,Integer> rankCount = new LinkedHashMap<>();
-    int totalPrice =0;
-    int purchase;
-    double sumRate;
+    private Map<Rank,Integer> rankCount = new LinkedHashMap<>();
+    private int totalPrice =0;
+    private int purchase;
+    private double sumRate;
 
     public LottoResult(int purchase){
         this.purchase = purchase;
