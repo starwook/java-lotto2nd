@@ -34,4 +34,10 @@ public class Lotto {
         }
         return matchCount;
     }
+    public boolean checkContainBonusNumber(int bonusNumber){
+        if (numbers.contains(bonusNumber)){
+            return true;
+        }
+        return false;
+    }
 }
