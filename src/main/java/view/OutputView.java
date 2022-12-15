@@ -4,17 +4,17 @@ import lotto.Rank;
 
 public class OutputView {
     private static String INPUT_PURCHASE ="구입금액을 입력해 주세요.";
-    private static String COUNT_OF_LOTTO ="개를 구매했습니다";
+    private static String COUNT_OF_LOTTO ="개를 구매했습니다.";
     private static String INPUT_WINNING_NUMBER ="당첨 번호를 입력해 주세요.";
     private static String INPUT_BONUS_NUMBER ="보너스 번호를 입력해 주세요.";
     private static String RESULT_START = "당첨통계\n---";
     private static String COUNT_OF_CORRECT ="개 일치";
     private static String BONUS_CORRECT =", 보너스 볼 일치";
     private static String SUM_RATE_START = "총 수익률은 ";
-    private static String SUM_RATE_END ="%입니다";
+    private static String SUM_RATE_END ="%입니다.";
     private static String NUM = "개";
     private static String IS = " - ";
-    private static String MONEY_LEFT = "(";
+    private static String MONEY_LEFT = " (";
     private static String MONEY_RIGHT = "원)";
 
     public void inputPurchase(){
