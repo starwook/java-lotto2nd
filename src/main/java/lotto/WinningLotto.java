@@ -7,6 +7,11 @@ public class WinningLotto {
     public WinningLotto(Lotto lotto,Integer bonusNumber){
         this.lotto = lotto;
         this.bonusNumber = bonusNumber;
-
+    }
+    public Lotto getLotto(){
+        return lotto;
+    }
+    public Integer getBonusNumber(){
+        return bonusNumber;
     }
 }
