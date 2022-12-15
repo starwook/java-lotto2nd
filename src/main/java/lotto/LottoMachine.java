@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class LottoMachine {
     private static int LOTTO_PRICE =1000;
@@ -12,6 +11,7 @@ public class LottoMachine {
     private static int RANGE_START =1;
     private static int RANGE_END =45;
     private WinningLotto winningLotto;
+    private LottoJudgeMent lottoJudgeMent;
     private List<Lotto> lottos = new ArrayList<>();
     private int lottoCount;
     private double returnRate;
@@ -20,7 +20,14 @@ public class LottoMachine {
         validatePurchase(purchase);
         makeWinningLotto(winningLottoInput, bonusNumberInput);
         makeLottos();
+        checkEachLotto();
     }
+    private void checkEachLotto() {
+        for(int i=0;i<lottos.size();i++){
+            lottoJudgeMent = new LottoJudgeMent(winningLotto,lottos.get(i));
+        }
+    }
+
     private void makeLottos() {
         for(int i=0;i<lottoCount;i++){
             List<Integer> lottoRandomNumbers = Randoms.pickUniqueNumbersInRange(RANGE_START,RANGE_END,LOTTO_SIZE);
