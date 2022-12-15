@@ -13,10 +13,19 @@ public class LottoMachine {
     private int lottoCount;
     private double returnRate;
 
-    public LottoMachine(int purchase,List<Integer> numberInput,int bonusNumberInput){
+    public LottoMachine(int purchase,List<Integer> winningLottoInput,int bonusNumberInput){
         validatePurchase(purchase);
-        validateNumbersInRange(numberInput);
+        makeWinningLotto(winningLottoInput, bonusNumberInput);
+        for(int i=0;i<lottoCount;i++){
+            for(int lottoIndex =0;lottoIndex<LOTTO_SIZE;lottoIndex++){
+            }
+        }
+    }
 
+    private void makeWinningLotto(List<Integer> winningLottoInput, int bonusNumberInput) {
+        validateNumbersInRange(winningLottoInput);
+        validateNumberInRange(bonusNumberInput);
+        winningLotto = new WinningLotto(new Lotto(winningLottoInput), bonusNumberInput);
     }
 
     private void validateNumbersInRange(List<Integer> numberInput) {
@@ -38,5 +47,8 @@ public class LottoMachine {
         lottoCount = purchase /LOTTO_PRICE;
     }
 
+    public static int getLottoSize(){
+        return LOTTO_SIZE;
+    }
 
 }
