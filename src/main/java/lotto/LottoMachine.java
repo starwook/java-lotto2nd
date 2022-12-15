@@ -16,16 +16,23 @@ public class LottoMachine {
     private LottoResult lottoResult;
     private List<Lotto> lottos = new ArrayList<>();
     private int lottoCount;
-
-
-    public LottoMachine(int purchase,List<Integer> winningLottoInput,int bonusNumberInput){
+    public LottoMachine(int purchase){
         validatePurchase(purchase);
         lottoResult = new LottoResult(purchase);
-        makeWinningLotto(winningLottoInput, bonusNumberInput);
         makeLottos();
+    }
+    public int getLottoCount(){
+        return lottoCount;
+    }
+
+    public int getCountToCheckBonus(){
+        return countToCheckBonus;
+    }
+    public LottoMachine(int purchase,List<Integer> winningLottoInput,int bonusNumberInput){
+        makeWinningLotto(winningLottoInput, bonusNumberInput);
         checkEachLotto();
     }
-    private void checkEachLotto() {
+    public void checkEachLotto() {
         for(int i=0;i<lottos.size();i++){
             lottoJudgeMent = new LottoJudgeMent(winningLotto,lottos.get(i),countToCheckBonus);
             changeRankCountIfWin();
@@ -45,7 +52,7 @@ public class LottoMachine {
         }
     }
 
-    private void makeWinningLotto(List<Integer> winningLottoInput, int bonusNumberInput) {
+    public void makeWinningLotto(List<Integer> winningLottoInput, int bonusNumberInput) {
         validateNumbersInRange(winningLottoInput);
         validateNumberInRange(bonusNumberInput);
         winningLotto = new WinningLotto(new Lotto(winningLottoInput), bonusNumberInput);
@@ -64,7 +71,7 @@ public class LottoMachine {
     }
 
     private void validatePurchase(int purchase) {
-        if(purchase %LOTTO_PRICE!=0 && purchase ==0){
+        if(purchase %LOTTO_PRICE!=0){
             throw new IllegalArgumentException();
         }
         lottoCount = purchase /LOTTO_PRICE;
