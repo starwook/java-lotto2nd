@@ -37,9 +37,11 @@ public class OutputView {
         System.out.println(RESULT_START);
     }
 
-    public void printEachResult(Rank rank,int count){
+    public void printEachResult(Rank rank,int count,boolean bonus){
         System.out.print(rank.getCountOfMatch()+COUNT_OF_CORRECT);
-
+        if(bonus){
+            System.out.print(BONUS_CORRECT);
+        }
         System.out.println(MONEY_LEFT+rank.getWinningMoney()+MONEY_RIGHT+IS+count+NUM);
     }
 
