@@ -18,12 +18,11 @@ public class LottoJudgeMent {
         matchCount = lotto.countMatchingNumber(winningNumbers);
         isBonusMatch = lotto.checkContainBonusNumber(bonusNumber);
     }
-    public Rank getRank(){
+    public void makeRank(){
         List<Rank> ranks = List.of(Rank.values());
         for(int i=0;i<ranks.size();i++){
             checkEachRank(ranks, i);
         }
-        return rank;
     }
 
     private void checkEachRank(List<Rank> ranks, int i) {
@@ -35,4 +34,9 @@ public class LottoJudgeMent {
             rank = ranks.get(i);
         }
     }
+
+    public Rank getRank(){
+        return rank;
+    }
+
 }
