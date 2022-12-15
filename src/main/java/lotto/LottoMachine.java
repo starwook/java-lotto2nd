@@ -16,15 +16,21 @@ public class LottoMachine {
     public LottoMachine(int purchase,List<Integer> numberInput,int bonusNumberInput){
         validatePurchase(purchase);
         validateNumbersInRange(numberInput);
+
     }
 
     private void validateNumbersInRange(List<Integer> numberInput) {
         for(int i = 0; i< numberInput.size(); i++){
-            if(numberInput.get(i)>RANGE_END || numberInput.get(i)<RANGE_START){
-                throw new IllegalArgumentException();
-            }
+            validateNumberInRange(numberInput.get(i));
         }
     }
+
+    private void validateNumberInRange(int number) {
+        if(number>RANGE_END || number<RANGE_START){
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void validatePurchase(int purchase) {
         if(purchase %LOTTO_PRICE!=0 && purchase ==0){
             throw new IllegalArgumentException();
