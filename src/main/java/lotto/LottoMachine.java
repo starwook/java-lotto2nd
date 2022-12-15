@@ -1,5 +1,6 @@
 package lotto;
 
+import Resource.ErrorResource;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -66,13 +67,13 @@ public class LottoMachine {
 
     private void validateNumberInRange(int number) {
         if(number>RANGE_END || number<RANGE_START){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorResource.ERROR_START+ErrorResource.NUMBER_NOT_IN_RANGE);
         }
     }
 
     private void validatePurchase(int purchase) {
         if(purchase %LOTTO_PRICE!=0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorResource.ERROR_START+ErrorResource.PURCHASE_WRONG);
         }
         lottoCount = purchase /LOTTO_PRICE;
     }
